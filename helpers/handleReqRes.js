@@ -33,7 +33,7 @@ handlers.handleReqRes = (req, res) => {
 
   //headers
   const headersObj = req.headers;
-  console.log(headersObj);
+  
 
   //get the body for post
   const decoder = new StringDecoder("utf-8");
@@ -44,14 +44,14 @@ handlers.handleReqRes = (req, res) => {
   }
 
   //find if the pathname exits on routes or not
-  const chosenHandler=routes.trimmedPath ? routes.trimmedPath : notFoundHandler
+  const chosenHandler=routes[trimmedPath] ? routes[trimmedPath] : notFoundHandler
   
   chosenHandler(requestProperties,(statusCode,payLoad)=>{
-  const statusCode=typeof(statusCode)==='number' ? statusCode : 500 ;
-  const payLoad=typeof(payLoad)==='object' ? payLoad  :{}
+  statusCode=typeof(statusCode)==='number' ? statusCode : 500 ;
+  payLoad=typeof(payLoad)==='object' ? payLoad  :{}
   const payLoadString=JSON.stringify(payLoad) ;
   res.writeHead(statusCode);
-  res.end(payLoad)
+  res.end(payLoadString);
   })
 
   req.on("data", (buffer) => {

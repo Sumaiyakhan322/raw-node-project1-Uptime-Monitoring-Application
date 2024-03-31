@@ -8,8 +8,11 @@
 const handler={} ;
 
 //handlers functions
-handler.notFoundHandler=()=>{
-    console.log('Not Found');
+handler.notFoundHandler=(requestProperties,callback)=>{
+    console.log(requestProperties);
+    callback(404, {
+        message :'Not found the url'
+    })
 
 }
 

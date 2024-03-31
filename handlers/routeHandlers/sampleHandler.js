@@ -8,8 +8,10 @@
 const handler={} ;
 
 //sampleHandlers functions
-handler.sampleHandler=()=>{
-    console.log('Sample');
+handler.sampleHandler=(requestProperties,callback)=>{
+   callback(200,{
+    message : 'This is the sample url '
+   })
 
 }
 
