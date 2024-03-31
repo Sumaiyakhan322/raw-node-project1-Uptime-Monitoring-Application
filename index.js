@@ -6,6 +6,7 @@
 
 //Dependencies
 const http=require('http');
+const url=require('url')
 
 
 //App object -Module scaffolding
@@ -26,11 +27,31 @@ app.createServer=()=>{
     })
 }
 
+//handle req and response
 app.handleReqRes=(req,res)=>{
+    //Request handle
+    //get the url and parse it
+     const parseUrl=url.parse(req.url,true);
+ 
+    //get the pathname (/about)
+    const path=parseUrl.pathname;
+
+    //remove the 1st and last / from the path name 
+    const trimmedPath=path.replace(/^\/|\/$/g, '')
+    // console.log(trimmedPath);
+    
+    //get the method 
+    const method=req.method.toLowerCase();
+    
+
+
+
+    // response handle
     res.end('Hello worrrrrrld')
 
 }
 
+// start the server 
 app.createServer()
 
 
