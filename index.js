@@ -6,7 +6,8 @@
 
 //Dependencies
 const http=require('http');
-const url=require('url')
+const url=require('url');
+const {StringDecoder}=require('string_decoder')
 
 
 //App object -Module scaffolding
@@ -42,12 +43,35 @@ app.handleReqRes=(req,res)=>{
     
     //get the method 
     const method=req.method.toLowerCase();
+
+    //get the query
+    const queryStringObj=parseUrl.query;
+    // console.log(queryStringObj);
+
+    //headers
+    const headersObj=req.headers;
+    console.log(headersObj);
+
+    //get the body for post
+    const decoder=new StringDecoder('utf-8')
+    let strings=''
+
+    req.on('data',(buffer)=>{
+   strings +=decoder.write(buffer)
+        
+    })
+    req.on('end',(buffer)=>{
+        strings +=decoder.end()
+       console.log(strings);
+        // response handle
+         res.end('Hello worrrrrrld')
+    })
     
 
 
 
-    // response handle
-    res.end('Hello worrrrrrld')
+
+   
 
 }
 
