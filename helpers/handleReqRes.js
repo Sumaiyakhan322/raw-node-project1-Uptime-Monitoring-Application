@@ -6,6 +6,8 @@
 //dependencies
 const url = require("url");
 const { StringDecoder } = require("string_decoder");
+const routes=require('../routes')
+const {notFoundHandler}=require('../handlers/routeHandlers/notFoundHandler')
 //module scaffolding
 
 const handlers = {};
@@ -36,6 +38,21 @@ handlers.handleReqRes = (req, res) => {
   //get the body for post
   const decoder = new StringDecoder("utf-8");
   let strings = "";
+
+  const requestProperties={
+    parseUrl, path,trimmedPath,method, queryStringObj,headersObj
+  }
+
+  //find if the pathname exits on routes or not
+  const chosenHandler=routes.trimmedPath ? routes.trimmedPath : notFoundHandler
+  
+  chosenHandler(requestProperties,(statusCode,payLoad)=>{
+  const statusCode=typeof(statusCode)==='number' ? statusCode : 500 ;
+  const payLoad=typeof(payLoad)==='object' ? payLoad  :{}
+  const payLoadString=JSON.stringify(payLoad) ;
+  res.writeHead(statusCode);
+  res.end(payLoad)
+  })
 
   req.on("data", (buffer) => {
     strings += decoder.write(buffer);
