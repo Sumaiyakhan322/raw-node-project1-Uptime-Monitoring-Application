@@ -46,20 +46,21 @@ handlers.handleReqRes = (req, res) => {
   //find if the pathname exits on routes or not
   const chosenHandler=routes[trimmedPath] ? routes[trimmedPath] : notFoundHandler
   
-  chosenHandler(requestProperties,(statusCode,payLoad)=>{
-  statusCode=typeof(statusCode)==='number' ? statusCode : 500 ;
-  payLoad=typeof(payLoad)==='object' ? payLoad  :{}
-  const payLoadString=JSON.stringify(payLoad) ;
-  res.writeHead(statusCode);
-  res.end(payLoadString);
-  })
+
 
   req.on("data", (buffer) => {
     strings += decoder.write(buffer);
   });
   req.on("end", (buffer) => {
     strings += decoder.end();
-    console.log(strings);
+    
+    chosenHandler(requestProperties,(statusCode,payLoad)=>{
+      statusCode=typeof(statusCode)==='number' ? statusCode : 500 ;
+      payLoad=typeof(payLoad)==='object' ? payLoad  :{}
+      const payLoadString=JSON.stringify(payLoad) ;
+      res.writeHead(statusCode);
+      res.end(payLoadString);
+      })
     // response handle
     res.end("Hello worrrrrrld");
   });
