@@ -21,7 +21,7 @@ const app={}
 
 // })
 //testing file system for read
-data.read('text1','newFile',(err,data)=>{
+data.read('test1','newFile',(err,data)=>{
     console.log(data);
 
 })
