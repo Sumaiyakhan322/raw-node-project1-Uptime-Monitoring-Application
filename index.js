@@ -7,11 +7,19 @@
 //Dependencies
 const http=require('http');
 const {handleReqRes}=require('./helpers/handleReqRes');
-const environment=require('./helpers/environments')
+const environment=require('./helpers/environments');
+const data=require('./lib/data')
 
 
 //App object -Module scaffolding
 const app={}
+
+
+//testing file system
+data.create('text1','newFile',{'name':'Bd','lg':'Bangla'},(err)=>{
+    console.log(`Error was`,err);
+
+})
 
 
 //Config
