@@ -15,9 +15,14 @@ const data=require('./lib/data')
 const app={}
 
 
-//testing file system
-data.create('text1','newFile',{'name':'Bd','lg':'Bangla'},(err)=>{
-    console.log(`Error was`,err);
+//testing file system for create
+// data.create('text1','newFile',{'name':'Bd','lg':'Bangla'},(err)=>{
+//     console.log(`Error was`,err);
+
+// })
+//testing file system for read
+data.read('text1','newFile',(err,data)=>{
+    console.log(data);
 
 })
 
