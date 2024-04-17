@@ -31,10 +31,17 @@ const app={}
 
 
 //testing file for update
-data.update('test1','newFile',{'name':'Bd','lg':'Bangla','hiii':'hlw'},(err)=>{
-    console.log(`Error was`,err);
+// data.update('test1','newFile',{'name':'Bd','lg':'Bangla','hiii':'hlw'},(err)=>{
+//     console.log(`Error was`,err);
 
-})
+// })
+
+
+//testing file for update
+// data.update('test1','newFile',{'name':'Bd','lg':'Bangla','hiii':'hlw'},(err)=>{
+//     console.log(`Error was`,err);
+
+// })
 
 
 
