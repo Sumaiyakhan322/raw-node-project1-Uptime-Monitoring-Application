@@ -16,15 +16,26 @@ const app={}
 
 
 //testing file system for create
-// data.create('text1','newFile',{'name':'Bd','lg':'Bangla'},(err)=>{
+// data.create('test1','newFile',{'name':'Bd','lg':'Bangla'},(err)=>{
 //     console.log(`Error was`,err);
 
 // })
+
+
+
 //testing file system for read
-data.read('test1','newFile',(err,data)=>{
-    console.log(data);
+// data.read('test1','newFile',(err,data)=>{
+//     console.log(data);
+
+// })
+
+
+//testing file for update
+data.update('test1','newFile',{'name':'Bd','lg':'Bangla','hiii':'hlw'},(err)=>{
+    console.log(`Error was`,err);
 
 })
+
 
 
 //Config
