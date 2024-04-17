@@ -37,11 +37,11 @@ const app={}
 // })
 
 
-//testing file for update
-// data.update('test1','newFile',{'name':'Bd','lg':'Bangla','hiii':'hlw'},(err)=>{
-//     console.log(`Error was`,err);
+//testing file for delete
+data.delete('test1','newFile',(err)=>{
+    console.log(`Error was`,err);
 
-// })
+})
 
 
 
