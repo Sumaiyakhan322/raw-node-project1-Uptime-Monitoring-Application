@@ -58,6 +58,7 @@ handlers.handleReqRes = (req, res) => {
       statusCode=typeof(statusCode)==='number' ? statusCode : 500 ;
       payLoad=typeof(payLoad)==='object' ? payLoad  :{}
       const payLoadString=JSON.stringify(payLoad) ;
+      res.setHeader('Content-Type','application/json')
       res.writeHead(statusCode);
       res.end(payLoadString);
       })
