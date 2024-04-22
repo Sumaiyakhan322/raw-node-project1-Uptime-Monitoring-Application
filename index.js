@@ -38,10 +38,10 @@ const app={}
 
 
 //testing file for delete
-data.delete('test1','newFile',(err)=>{
-    console.log(`Error was`,err);
+// data.delete('test1','newFile',(err)=>{
+//     console.log(`Error was`,err);
 
-})
+// })
 
 
 
